@@ -51,15 +51,15 @@ class Main extends PluginBase implements Listener {
         if (strtolower(substr($message, 0, 5) === "/tell") || strtolower(substr($message, 0, 4) === "/msg")) { //Command
             $command = substr($message, 1);
             $args = explode(" ", $command);
-            if (!isset($args[1])){
-               return true; 
+            if (!isset($args[1])) {
+                return true;
             }
             $sender = $event->getPlayer();
-            
+
             foreach ($this->enabled as $noteller) {
- 
+
                 if (strpos(strtolower($noteller), strtolower($args[1])) !== false) {
-                    $sender->sendMessage(TextFormat::RED. "This player is not accepting /tell or /msg");
+                    $sender->sendMessage(TextFormat::RED . "This player is not accepting /tell or /msg");
                     $event->setCancelled(true);
                 }
             }
