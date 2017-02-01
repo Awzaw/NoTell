@@ -14,8 +14,10 @@ use pocketmine\event\player\PlayerQuitEvent;
 
 class Main extends PluginBase implements Listener {
 
+    private $enabled;
+
     public function onEnable() {
-        $this->enabled = array();
+        $this->enabled = [];
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
