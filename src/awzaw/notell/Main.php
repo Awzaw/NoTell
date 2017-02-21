@@ -24,7 +24,7 @@ class Main extends PluginBase implements Listener {
     public function onCommand(CommandSender $issuer, Command $cmd, $label, array $args) {
 
         if (strtolower($cmd->getName()) !== "notell")
-            return;
+            return false;
 
         if (!(isset($args[0])) && ($issuer instanceof Player)) {
             if (isset($this->enabled[strtolower($issuer->getName())])) {
@@ -39,6 +39,8 @@ class Main extends PluginBase implements Listener {
                 $issuer->sendMessage(TEXTFORMAT::GREEN . "You have turned on viewing /tell messages");
             }
             return true;
+        } else {
+            return false;
         }
     }
 
