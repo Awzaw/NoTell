@@ -44,13 +44,8 @@ class Main extends PluginBase implements Listener {
         }
     }
 
-    /**
-     * @param PlayerCommandPreprocessEvent $event
-     *
-     * @priority MONITOR
-     */
     public function onPlayerCommand(PlayerCommandPreprocessEvent $event) {
-
+        if ($event->isCancelled()) return;
         $message = $event->getMessage();
         if (strtolower(substr($message, 0, 5) === "/tell") || strtolower(substr($message, 0, 4) === "/msg")) { //Command
             $command = substr($message, 1);
@@ -71,6 +66,7 @@ class Main extends PluginBase implements Listener {
     }
 
     public function onQuit(PlayerQuitEvent $e) {
+        if ($e->isCancelled()) return;
         if (isset($this->enabled[strtolower($e->getPlayer()->getName())])) {
             unset($this->enabled[strtolower($e->getPlayer()->getName())]);
         }
