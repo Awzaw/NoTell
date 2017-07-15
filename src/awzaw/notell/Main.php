@@ -21,7 +21,7 @@ class Main extends PluginBase implements Listener {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
-    public function onCommand(CommandSender $issuer, Command $cmd, $label, array $args) {
+    public function onCommand(CommandSender $issuer, Command $cmd, string $label, array $args) : bool{
 
         if (strtolower($cmd->getName()) !== "notell")
             return false;
